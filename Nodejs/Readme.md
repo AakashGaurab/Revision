@@ -629,3 +629,15 @@
 ## What is Entity Relationship Model? ( ER Model )
 - the Entity-Relationship (ER) Model is a conceptual data model used to represent and analyze the relationships between entities in a database. It helps in designing a well-structured database by visually representing entities, attributes, and relationships. The ER Model serves as a blueprint for creating a database and is an essential step in the database design process.
 
+## What is PACELC?
+- The PACELC theorem is an extension to the CAP (Consistency, Availability, and Partition Tolerance) theorem in the field of distributed systems. It addresses the question of what happens in a distributed system when there is no network partition. PACELC stands for Partitioned, Availability, Consistency Else Latency, Consistency
+
+- According to the PACELC theorem, in the case of network partitioning (P) in a distributed system, one has to choose between availability (A) and consistency (C), just like in the CAP theorem. However, in the absence of partitions (E), one has to choose between latency (L) and consistency (C)
+
+- There are three possible options or modes of operation described by the PACELC theorem:
+
+CP (Consistency and Partition Tolerance): In this mode, consistency and partition tolerance are prioritized over availability. The system ensures that all nodes see the same data at the same time, even in the presence of network partitions. However, availability may be compromised during network partitions [7].
+
+AP (Availability and Partition Tolerance): In this mode, availability and partition tolerance are prioritized over strict consistency. The system guarantees that every request receives a response, even in the presence of network partitions. However, there may be temporary inconsistencies in the data due to asynchronous replication or eventual consistency [7].
+
+EL (Else Latency, Consistency): In this mode, low latency and high availability are prioritized, but consistency and partition tolerance may be compromised. The system aims to provide fast response times and high availability, but there may be data inconsistencies or conflicts due to concurrent updates or lack of coordination [7].
