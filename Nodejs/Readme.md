@@ -603,3 +603,13 @@
 - Efficiency: Because HTTP requires a new request and response for each piece of data sent between the client and the server, it can be less efficient than WebSockets, which use a persistent connection to transmit data more efficiently.
 - Real-time capabilities: HTTP is not designed for real-time communication, and while techniques like long-polling can be used to simulate real-time communication, it is not as efficient as WebSockets, which are specifically designed for real-time communication.
 - Support for server-initiated updates: HTTP requests are always initiated by the client, whereas WebSockets can support server-initiated updates, where the server can send data to the client at any time without the client first requesting it.
+- 
+
+
+##  What is gRPC?
+- gRPC is a modern RPC framework that enables efficient and high-performance communication between client and server applications. It provides features like language and platform agnosticism, protocol buffers, and pluggable support for various functionalities. With its focus on efficiency and performance, gRPC has gained widespread adoption and is used by many prominent companies for building scalable and connected systems.
+
+- Key features and aspects of gRPC include:
+- Efficiency and Performance: gRPC is built on top of the HTTP/2 protocol, which provides features like multiplexing, header compression, and server push, resulting in improved efficiency and reduced latency. It also supports bi-directional streaming and asynchronous communication, enabling real-time communication between clients and servers
+
+- Language and Platform Agnostic: gRPC supports multiple programming languages, including C++, Java, Python, Go, and more. It provides code generation tools that automatically generate idiomatic client and server stubs for each supported language, making it easier for developers to work with gRPC in their preferred language
