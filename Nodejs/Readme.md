@@ -613,3 +613,14 @@
 - Efficiency and Performance: gRPC is built on top of the HTTP/2 protocol, which provides features like multiplexing, header compression, and server push, resulting in improved efficiency and reduced latency. It also supports bi-directional streaming and asynchronous communication, enabling real-time communication between clients and servers
 
 - Language and Platform Agnostic: gRPC supports multiple programming languages, including C++, Java, Python, Go, and more. It provides code generation tools that automatically generate idiomatic client and server stubs for each supported language, making it easier for developers to work with gRPC in their preferred language
+- 
+
+
+##  What is Normalization / Denormalization?
+- Normalization and denormalization are two concepts in database design that are used to optimize the performance and efficiency of databases.
+
+- Normalization is the process of organizing and structuring data in a database efficiently. It involves breaking down a database into multiple tables and establishing relationships between those tables based on certain rules. The goal of normalization is to eliminate redundancy and inconsistencies in the data, ensuring that each piece of information is stored in one place and avoiding data duplication. There are several normal forms, such as 1NF, 2NF, 3NF, BCNF, 4NF, and 5NF, each with its own set of rules that define the level of normalization achieved
+
+- The benefits of normalization include improved data consistency, reduced redundancy, and minimized update anomalies. By eliminating redundancy, normalization helps maintain data integrity and avoids inconsistencies that can arise from redundant data. It also allows for efficient storage and retrieval of data, as each piece of information is stored in a structured and organized manner
+- denormalization is the process of adding redundancy to a normalized database. It involves introducing redundant data into the database schema to enhance its functionality and improve the performance of specific database queries. Denormalization is often used to optimize read operations and improve query performance by reducing the need for complex table joins and allowing for faster data retrieval. By duplicating certain data, denormalization avoids the overhead associated with over-normalized structures and can lead to faster search operations
+- It is important to note that denormalization should be used judiciously and in specific situations where the benefits outweigh the drawbacks. While denormalization can improve read performance, it can introduce data redundancy and increase the complexity of data maintenance. It can also lead to data inconsistencies if the redundant data is not properly managed. Therefore, denormalization should be carefully considered and implemented based on the specific needs and requirements of the application or system
