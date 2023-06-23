@@ -888,7 +888,7 @@ Block elements always start on a new line.
 - They take up the full available width of their parent container, spanning from left to right.
 - Block elements can have width, height, padding, margin, and border properties set.
 - They create a line break before and after themselves.
-Examples of block-level elements include <div>, <p>, <h1> to <h6>, <ul>, <ol>, <li>, <table>, and <form>.
+Examples of block-level elements include "<div>, <p>, <h1> to <h6>, <ul>, <ol>, <li>, <table>, and <form>".
 
 - Inline Elements:
 Inline elements do not start on a new line. They flow alongside adjacent content.
