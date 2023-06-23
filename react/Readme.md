@@ -621,6 +621,7 @@
 Here are some key points about React Hooks:
 
 Hooks are a new addition to React that were introduced in version 16.8 [0].
+
 They allow you to use state and other React features without writing a class [0].
 Hooks are functions that let you "hook into" React state and lifecycle features from function components [6].
 They are completely opt-in and don't contain any breaking changes [0].
@@ -631,15 +632,17 @@ Hooks allow you to reuse stateful logic between components without changing thei
 They make it easier to understand and manage complex components by allowing you to separate them into smaller functions based on related functionality [9].
 Hooks eliminate the need to use classes in React, making it easier to learn and use React features without having to understand class syntax [9].
 There are several built-in React Hooks, such as useState, useEffect, useReducer, useCallback, useMemo, useRef, useLayoutEffect, and useDebugValue [3].
+
+
 Let's take a closer look at some of the basic React Hooks:
 
-useState: This Hook allows you to add state to your functional components. It returns a stateful value and an updater function to update it [3].
-useEffect: This Hook allows you to perform side effects in your functional components, such as fetching data from an API or subscribing to events. It runs after every render and can be used to manage subscriptions, timers, mutations, and more [3].
+- useState: This Hook allows you to add state to your functional components. It returns a stateful value and an updater function to update it [3].
+- useEffect: This Hook allows you to perform side effects in your functional components, such as fetching data from an API or subscribing to events. It runs after every render and can be used to manage subscriptions, timers, mutations, and more [3].
 useReducer: This Hook is an alternative to useState that helps with complex state management. It returns a stateful value and a dispatch function to update it [3].
-useCallback: This Hook returns a memoized version of a callback function. It can be used to prevent unnecessary re-renders of child components that depend on the callback [3].
-useMemo: This Hook returns a memoized value that helps with performance optimizations. It can be used to avoid expensive calculations on every render [3].
+- useCallback: This Hook returns a memoized version of a callback function. It can be used to prevent unnecessary re-renders of child components that depend on the callback [3].
+- useMemo: This Hook returns a memoized value that helps with performance optimizations. It can be used to avoid expensive calculations on every render [3].
 useRef: This Hook returns a ref object with a .current property. The ref object is mutable and can be used to access a child component imperatively [3].
-useLayoutEffect: This Hook is similar to useEffect, but it fires synchronously after all DOM mutations. It's best to use useEffect as much as possible and only use useLayoutEffect when necessary [3].
+- useLayoutEffect: This Hook is similar to useEffect, but it fires synchronously after all DOM mutations. It's best to use useEffect as much as possible and only use useLayoutEffect when necessary [3].
 useDebugValue: This Hook helps to display a label in React DevTools for custom hooks. It can be used to provide additional debugging information [3].
 These are just a few examples of the built-in React Hooks. There are many more hooks available that can be used to solve specific problems or optimize your components. Additionally, you can also create your own custom hooks to encapsulate reusable logic [3].
 
