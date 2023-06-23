@@ -888,13 +888,13 @@ Respect left and right margins and padding.
 Can have a width and height set.
 Force a line break after the block element.
 Acquire full width if width is not defined.
-Examples of block elements include <div>, <p>, <h1> to <h6>, <ul>, <li>, and <section>.
+
 
 - Inline elements:
 Do not respect top and bottom margins and padding.
 Cannot have a width and height set.
 Allow other elements to sit to their left and right.
-Examples of inline elements include <span>, <a>, <strong>, <em>, <img>, and <input>.
+
 
 - Inline-block elements:
 Allow other elements to sit to their left and right.
@@ -902,7 +902,7 @@ Respect top and bottom margins and padding.
 Respect height and width.
 Behave like inline elements in terms of being on the same line as adjacent content.
 Behave like block elements in terms of allowing width and height to be set.
-Examples of inline-block elements include <button>, <label>, and <select>.
+
 
 # What is Ref?
 - In the context of React, a "ref" is a feature provided by React to access the underlying DOM element or a React component instance. It allows you to interact with the DOM or access the methods and properties of a component directly. The concept of refs is used when you need to modify or interact with a child component without relying on props.
