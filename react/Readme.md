@@ -649,3 +649,194 @@ These are just a few examples of the built-in React Hooks. There are many more h
 It's worth noting that while React Hooks provide a more concise and functional way of writing components, there are no plans to remove classes from React. Hooks are completely opt-in, and you can choose to use them in your new components while still using classes in your existing codebase if you prefer [2].
 
 In conclusion, React Hooks are a powerful addition to React that allow you to use state and other React features in function components without writing a class. They provide a more direct API to React concepts and offer a more ergonomic way to build components. With built-in hooks like useState and useEffect, you can add state and perform side effects in your functional components. Additionally, you can create your own custom hooks to encapsulate reusable logic. While Hooks replace the need for classes in many cases, classes are still supported in React and can be used alongside Hooks if desired.
+
+
+# What are useEffect and useRef?
+- The useEffect and useRef are two important React Hooks that serve different purposes.
+
+useEffect is a hook that allows you to perform side effects in your functional components. It is similar to the lifecycle methods in class components. You can use useEffect to manage subscriptions, perform data fetching, manipulate the DOM, or any other side effect that needs to be executed after rendering 
+
+- useRef is a hook that returns a mutable ref object. It allows you to create a reference to a DOM element or any other value that persists across renders [3]. The ref object has a .current property that can be used to access the current value of the ref
+
+ import React, { useRef } from 'react';
+
+function Example() {
+  const inputRef = useRef();
+
+  const handleFocus = () => {
+    inputRef.current.focus();
+  };
+
+  return (
+    <div>
+      <input ref={inputRef} type="text" />
+      <button onClick={handleFocus}>Focus Input</button>
+    </div>
+  );
+}
+In this example, the useRef hook is used to create a ref object called inputRef. The ref object is then attached to the input element using the ref attribute. When the button is clicked, the handleFocus function is called, which uses the .current property of the inputRef to access the input element and call the focus() method to focus the input
+
+
+
+# how to merge data in useState  in react ?
+- Using the spread operator (...): The spread operator can be used to merge arrays or objects. When merging arrays, you can use the spread operator to create a new array that includes all the elements from the existing array as well as the new elements. When merging objects, you can use the spread operator to create a new object that includes all the properties from the existing object as well as the new properties.
+
+Here's an example of merging an array using the spread operator:
+
+   const [array, setArray] = useState([1, 2, 3]);
+
+   const mergeArray = () => {
+     setArray(prevArray => [...prevArray, 4, 5]);
+   };
+In this example, the mergeArray function updates the array state by creating a new array that includes all the elements from the existing array as well as the new elements [4, 5].
+
+Here's an example of merging an object using the spread operator:
+
+ const [object, setObject] = useState({ name: 'John', age: 25 });
+
+   const mergeObject = () => {
+     setObject(prevObject => ({ ...prevObject, gender: 'Male' }));
+   };
+In this example, the mergeObject function updates the object state by creating a new object that includes all the properties from the existing object as well as the new property gender: 'Male'.
+
+
+# what is react lifecycle ?
+- The React lifecycle refers to a series of events or methods that occur during the birth, growth, and death of a React component. These methods allow you to control and manipulate the component at different stages. The React lifecycle can be divided into three main phases: Mounting, Updating, and Unmounting. Let's explore each phase in detail:
+
+- Mounting:
+This phase occurs when a component is being inserted into the DOM for the first time.
+
+The following lifecycle methods are called in this phase:
+
+constructor(): This method is called when the component is being initialized and allows you to set the initial state and props of the component.
+
+render(): This method is responsible for rendering the component's JSX and returning the elements that will be displayed on the screen.
+
+componentDidMount(): This method is called after the component has been mounted in the DOM. It is commonly used for performing side effects, such as fetching data from an API or setting up event listeners.
+
+- Updating:
+This phase occurs when a component is being re-rendered due to changes in its props or state.
+The following lifecycle methods are called in this phase:
+render(): This method is called again to re-render the component with the updated props or state.
+
+componentDidUpdate(prevProps, prevState): This method is called after the component has been re-rendered. It allows you to perform side effects based on the updated props or state. You can also compare the previous props and state with the current props and state to determine if any specific action needs to be taken.
+
+- Unmounting:
+This phase occurs when a component is being removed from the DOM.
+
+The following lifecycle method is called in this phase:
+
+componentWillUnmount(): This method is called right before the component is unmounted from the DOM. It is commonly used for cleaning up any resources or event listeners that were set up in the componentDidMount() method.
+
+#  How useEffect is used  for cleaning event listeners or subscriptions ( like socket.io events) let’s see how we can implement that.
+- Set up a single socket event handler and use functional updates for state: In this approach, you would use an empty dependency array for useEffect and avoid referencing the state directly within the effect. Instead, use functional updates to update the state. This ensures that you are always working with the latest version of the state and avoids referencing an old version of the state when re-rendering occurs. This approach is suitable if you can easily update the state using functional updates. Here's an example:
+
+  
+React.useEffect(() => {
+  const handler = (message) => {
+    // handle the message
+  };
+  
+  socket.on('message', handler);
+  
+  return () => {
+    socket.off('message', handler);
+  };
+}, []);
+
+- Set up a new socket event handler with each change to state: In this approach, you create a new socket event handler every time the state changes. This ensures that each event handler is using the correct version of the state. However, it also means that you need to remove the previous event handler to avoid having multiple event handlers. This approach provides more flexibility in how you can use the state, but it can feel clunky due to the repeated setup and teardown of event handlers. Here's an example:
+React.useEffect(() => {
+  const handler = (message) => {
+    // handle the message using the latest version of the state
+  };
+  
+  socket.on('message', handler);
+  
+  return () => {
+    socket.off('message', handler);
+  };
+}, [participants]);
+
+# The order of hooks
+A very important thing we have to understand is that we can’t change the order or numbers of the hooks in each render. It must be the same in every render. That means we can’t use conditional hooks. For e.g
+
+if (item) {
+    useEffect(() => {}) // you can't do this
+}
+or this 
+items.forEach(() => useEffect(() => {}))
+// because if the length of items changes the useEffect count will not be same in the next render.
+
+
+# What is Memoization?
+- Memoization in React refers to the process of optimizing React components by caching their results and preventing unnecessary re-renders. React provides several tools for memoization, such as React.memo(), useMemo(), and useCallback().
+
+- One way to memoize a functional component in React is by using the React.memo() higher-order component. When you wrap a component with React.memo(), it performs a shallow comparison of the component's props to determine if it needs to be re-rendered. If the props haven't changed, the memoized component reuses the previously memoized values and skips the re-render. Here's an example:
+
+function Comments({ name, comment, likes }) {
+  return (
+    <div>
+      <p>{name}</p>
+      <p>{comment}</p>
+      <p>{likes}</p>
+    </div>
+  );
+}
+
+const MemoizedComment = React.memo(Comments);
+In the above example, the MemoizedComment component will only re-render if its props (name, comment, likes) have changed. Otherwise, it will reuse the memoized values and skip the re-render.
+
+- If you want to have more control over the comparison of props, you can provide a custom comparison function as the second argument to React.memo(). This function receives the previous props and the next props as arguments and should return true if the props are equal and false otherwise. Here's an example:
+
+function checkCommentProps(prevProps, nextProps) {
+  return (
+    prevProps.name === nextProps.name &&
+    prevProps.comment === nextProps.comment &&
+    prevProps.likes === nextProps.likes
+  );
+}
+
+const MemoizedComment = React.memo(Comments, checkCommentProps);
+In this example, the MemoizedComment component will only re-render if the name, comment, or likes props have changed.
+
+- Apart from React.memo(), React also provides the useMemo() and useCallback() hooks for memoization within functional components. These hooks allow you to memoize the values returned by a function or the function itself, respectively. By memoizing these values, you can avoid re-computing them on every render, optimizing performance. Here's an example:
+
+const memoizedValue = React.useMemo(() => expensiveFunction(), [dependency]);
+
+const memoizedCallback = React.useCallback(() => {
+  // function body
+}, [dependency]);
+In the above example, useMemo() memoizes the result of the expensiveFunction() based on the dependency array. The memoized value will only be recalculated if the dependency changes. Similarly, useCallback() memoizes the callback function itself, ensuring that it remains the same across renders unless the dependency changes.
+
+- It's important to note that memoization should only be applied to components or values that are actually performance bottlenecks. Applying memoization indiscriminately can introduce unnecessary complexity and overhead. React is already optimized to handle many rendering scenarios efficiently, so memoization should be used judiciously for specific cases where it provides a noticeable performance improvement.
+
+
+ # Difference between shallow copy and deep copy?
+ - Shallow Copy: A shallow copy creates a new object and copies the values of the original object's fields into the new object. However, if the original object contains references to other objects, the references are copied rather than creating new copies of the referred objects. This means that both the original object and the shallow copy share the same references to the nested objects. If any changes are made to the nested objects, both the original and the shallow copy will reflect those changes. Shallow copy is a relatively simple way to create copies, but it can lead to unexpected behavior if the shared references are modified.
+
+- Deep Copy: A deep copy, on the other hand, creates a new object and recursively copies all the fields and nested objects of the original object. Instead of copying references, a deep copy creates new instances of the referred objects. This means that the new copy is completely independent of the original object and any changes made to the nested objects will not affect the original object or any other copies. Deep copy ensures that each copy has its own separate memory space and is useful when you want to create a completely independent copy of an object.
+
+- To summarize, the main difference between shallow copy and deep copy is how they handle nested objects or references. Shallow copy copies the references, while deep copy creates new instances of the referred objects.
+
+- It's important to note that the implementation of shallow copy and deep copy can vary depending on the programming language and the specific data structures being used. Some languages provide built-in mechanisms for performing shallow or deep copies, while in others, you may need to implement the copying logic yourself.
+
+# What is the difference between FrameWork and Library?
+- A library is a collection of pre-compiled functions or modules that can be called by developers at their discretion. It provides specific functionalities that can be used in various parts of an application. When using a library, the control flow remains with the developer, who decides when and where to call the library functions. The library is essentially a tool that developers can leverage to perform specific tasks or operations. Libraries are typically focused on solving a particular problem or providing a set of utilities.
+
+- On the other hand, a framework is a more comprehensive and opinionated piece of software. It provides a structure and a set of conventions for building applications. A framework defines the overall architecture and flow of an application, requiring developers to follow its guidelines and patterns. It often provides a skeleton or a blueprint for the application, with hooks and callbacks that developers fill in to customize the behavior. The control flow in a framework is inverted compared to a library. The framework dictates when and where the developer's code should be executed. Developers work within the framework's boundaries and extend its functionality according to their specific needs. Frameworks are typically larger in scope and cover multiple aspects of application development.
+
+- In summary, a library provides specific functionalities that developers can use at their discretion, while a framework provides a structure and conventions that developers must follow, with the framework controlling the overall flow of the application.
+
+
+
+  # What are Promises and its states?
+  - Promises in JavaScript are objects that represent the eventual completion (or failure) of an asynchronous operation and its resulting value. Promises have three different states: pending, fulfilled, and rejected.
+
+- Pending: This is the initial state of a promise. It represents that the asynchronous operation is still ongoing and the promise has not yet been fulfilled or rejected.
+- Fulfilled: When a promise resolves successfully, it enters the fulfilled state. This means that the asynchronous operation has been completed successfully and the promise has a resulting value. Once a promise is fulfilled, it becomes immutable, meaning it cannot change its state again.
+- Rejected: If an error occurs during the asynchronous operation, the promise enters the rejected state. This indicates that the operation has failed and the promise contains an error value or reason for the failure. Like the fulfilled state, once a promise is rejected, it is immutable.
+
+
+# 
+
+
