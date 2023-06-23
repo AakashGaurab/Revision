@@ -837,6 +837,147 @@ In the above example, useMemo() memoizes the result of the expensiveFunction() b
 - Rejected: If an error occurs during the asynchronous operation, the promise enters the rejected state. This indicates that the operation has failed and the promise contains an error value or reason for the failure. Like the fulfilled state, once a promise is rejected, it is immutable.
 
 
-# 
+# What are the lifecycle methods in function based react?
+- In function-based React components, the traditional lifecycle methods from class-based components are not available. Instead, React provides a new set of lifecycle methods in the form of hooks. Hooks are functions that allow you to add state and other React features to functional components.
 
+Here are some commonly used hooks that correspond to the lifecycle methods in class-based components:
+
+useEffect: This hook allows you to perform side effects in function components. It combines the functionality of multiple lifecycle methods, such as componentDidMount, componentDidUpdate, and componentWillUnmount. You can use useEffect to run code after the component has rendered, and to clean up resources when the component is unmounted.
+
+useLayoutEffect: This hook is similar to useEffect, but it runs synchronously after all DOM mutations. It is often used when you need to measure the layout of components or make DOM updates immediately after the render.
+
+useMemo: This hook allows you to memoize the result of a function and cache it until the dependencies change. It is similar to the shouldComponentUpdate lifecycle method, as it helps optimize performance by avoiding unnecessary re-renders.
+
+useCallback: This hook is used to memoize functions and prevent unnecessary re-creation of functions on each render. It is similar to useMemo, but specifically for functions.
+
+useRef: This hook allows you to create a mutable value that persists across renders. It is similar to the instance variables in class-based components and can be used to store references to DOM elements or other mutable values.
+
+useState: This hook allows you to add state to functional components. It replaces the setState method in class-based components and returns a state value and a function to update that state.
+These hooks provide a more concise and flexible way to manage component lifecycles in function-based React components. They allow you to handle side effects, manage state, and optimize performance without the need for class-based components.
+
+It's worth noting that hooks were introduced in React 16.8 and have become the recommended way to handle component lifecycles in functional components.
+
+# what is try catch error handling ?
+- The try...catch statement is used in programming languages like JavaScript and SQL to handle runtime errors. It allows you to try running a block of code and catch any errors that occur during its execution. Here's an explanation of how try...catch works in both JavaScript and SQL:
+
+In JavaScript: The try...catch syntax in JavaScript consists of two main blocks: try and catch. The code within the try block is executed, and if an error occurs, the execution is immediately stopped, and control is transferred to the catch block. The catch block contains the error handling code, where you can specify how to handle the error. The error object, typically named err, contains information about the error, such as its type and message. Here's an example:
+
+try {
+  // code that may throw an error
+} catch (err) {
+  // error handling code
+}
+If there are no errors within the try block, the catch block is skipped, and the program continues executing after the try...catch statement. However, if an error occurs, the program jumps directly to the catch block, allowing you to handle the error appropriately. You can also include a finally block after the catch block to specify code that should be executed regardless of whether an error occurred or not.
+
+In SQL (Transact-SQL): In SQL, the TRY...CATCH construct is used to handle errors within a block of code. The TRY block contains the code that may throw an error, and the CATCH block contains the error handling code. If an error occurs within the TRY block, the execution is immediately transferred to the CATCH block, allowing you to handle the error. The error object in SQL is not explicitly named, but you can reference it using the ERROR_MESSAGE() function to retrieve the error message. Here's an example:
+
+BEGIN TRY
+  -- code that may generate an error
+END TRY
+BEGIN CATCH
+  -- error handling code
+  SELECT ERROR_MESSAGE();
+END CATCH
+Within the CATCH block, you can perform actions such as logging the error, rolling back transactions, or returning error messages to the calling application. The TRY...CATCH construct in SQL can also be combined with other error handling mechanisms, such as RAISERROR or THROW statements, to customize the error handling behavior.
+
+Overall, the try...catch statement allows you to handle and manage errors in a controlled manner, providing a way to gracefully recover from unexpected situations and take appropriate actions.
+
+# What is the difference between a block element and an inline element?
+- Block Elements:
+Block elements always start on a new line.
+- They take up the full available width of their parent container, spanning from left to right.
+- Block elements can have width, height, padding, margin, and border properties set.
+- They create a line break before and after themselves.
+Examples of block-level elements include <div>, <p>, <h1> to <h6>, <ul>, <ol>, <li>, <table>, and <form>.
+
+- Inline Elements:
+Inline elements do not start on a new line. They flow alongside adjacent content.
+- They occupy only the space bounded by their opening and closing tags.
+- Inline elements typically do not have width, height, padding, margin, or border properties set, except for left and right margins.
+- They do not create line breaks before or after themselves.
+Examples of inline elements include <span>, <a>, <strong>, <em>, <img>, <input>, <label>, and <button>.
+
+# What is Ref?
+- In the context of React, a "ref" is a feature provided by React to access the underlying DOM element or a React component instance. It allows you to interact with the DOM or access the methods and properties of a component directly. The concept of refs is used when you need to modify or interact with a child component without relying on props.
+
+- To create a ref in React, you can use the React.createRef() function. This creates a ref object that can be attached to a React element using the ref attribute. For example:
+
+
+# Generating a random number ?
+// Returns a random integer from 0 to 9:
+Math.floor(Math.random() * 10);
+
+
+# Dates in JS 
+- Year new Date().getFullYear() return year only
+- new Date().getMonth() returns Month
+- new Date().getDate() returns Date
+- new Date().getHours return hours
+- new Date().getMinutes return minutes
+- new Date().getSeconds return Seconds
+
+- new Date() returns Fri Jun 23 2023 14:19:36 GMT+0530 (India Standard Time)
+- Date.now()  The Date.now() static method returns the number of milliseconds elapsed since the epoch, which is defined as the midnight at the beginning of January 1, 1970, UTC.
+
+
+- To determine if a given date is before or after the current date, you can use different approaches depending on the programming language you are using. Here are some possible solutions:
+
+JavaScript: In JavaScript, you can compare dates using the Date object and its methods. Here's an example:
+const givenDate = new Date('2023-06-23');
+const currentDate = new Date();
+
+if (givenDate > currentDate) {
+  console.log('Given date is after the current date');
+} else if (givenDate < currentDate) {
+  console.log('Given date is before the current date');
+} else {
+  console.log('Given date is the same as the current date');
+}
+
+
+# - What do mean by controlled and uncontrolled components?
+- Controlled Components: A controlled component is a React component that handles the form elements and their data through the component's state. The component's state is used to store the current value of the form elements, and the component itself controls the changes to the form elements by updating its state. The form elements are rendered with the value attribute bound to the corresponding state property, and the changes to the form elements are handled through the onChange event.
+
+Here's an example of a controlled component in React:
+import React, { useState } from 'react';
+
+function ControlledComponent() {
+  const [name, setName] = useState('');
+
+  const handleChange = (event) => {
+    setName(event.target.value);
+  };
+
+  return (
+    <input type="text" value={name} onChange={handleChange} />
+  );
+}
+
+- Uncontrolled Components: An uncontrolled component is a React component where the form elements store their own state internally, and the component does not manage the form data through its state. Instead, you can access the form element's value using a ref to query the DOM when needed.
+   import React, { useRef } from 'react';
+
+function UncontrolledComponent() {
+  const inputRef = useRef(null);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(inputRef.current.value);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input type="text" ref={inputRef} />
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
+
+# Class Components vs Functional Components.
+- Conclusion In conclusion, class components and functional components both have their use cases in React. Class components were the traditional way of handling state and lifecycle methods, but with the introduction of Hooks, functional components gained similar capabilities. Functional components offer a simpler syntax and can be more concise, while class components may be preferred by developers accustomed to object-oriented programming. Performance-wise, there is usually no significant difference between the two types of components. It's important to choose the approach that best suits your project requirements and personal coding style.
+
+  # what is virtual DOM?
+  - In summary, the Virtual DOM is a lightweight JavaScript representation of the actual DOM used in declarative web frameworks. It optimizes the process of updating the DOM by making changes to a virtual representation and then determining and applying the minimal set of changes needed to update the actual DOM.
+
+
+# What is useMemo?
 
