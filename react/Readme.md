@@ -883,19 +883,7 @@ Within the CATCH block, you can perform actions such as logging the error, rolli
 Overall, the try...catch statement allows you to handle and manage errors in a controlled manner, providing a way to gracefully recover from unexpected situations and take appropriate actions.
 
 # What is the difference between a block element and an inline element?
-- Block Elements:
-Block elements always start on a new line.
-- They take up the full available width of their parent container, spanning from left to right.
-- Block elements can have width, height, padding, margin, and border properties set.
-- They create a line break before and after themselves.
-Examples of block-level elements include div, p,h1 and form.
 
-- Inline Elements:
-Inline elements do not start on a new line. They flow alongside adjacent content.
-- They occupy only the space bounded by their opening and closing tags.
-- Inline elements typically do not have width, height, padding, margin, or border properties set, except for left and right margins.
-- They do not create line breaks before or after themselves.
-Examples of inline elements include span, a, aong, em, img, input, label, and button.
 
 # What is Ref?
 - In the context of React, a "ref" is a feature provided by React to access the underlying DOM element or a React component instance. It allows you to interact with the DOM or access the methods and properties of a component directly. The concept of refs is used when you need to modify or interact with a child component without relying on props.
