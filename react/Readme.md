@@ -999,3 +999,9 @@ true || false; // true
 false || true; // true
 true || true; // true
 false || false; // false
+
+# whats diffrence between forking a repo and cloning a repo? 
+- To summarize, forking creates an independent copy of a repository under your account, allowing you to make changes without affecting the original repository. Cloning, on the other hand, creates a local copy of a repository on your machine, enabling you to work on the codebase and contribute changes back to the original repository.
+
+
+
