@@ -988,3 +988,14 @@ function UncontrolledComponent() {
 
 # What is useMemo?
 
+# what is short circuiting in JS ?
+- Short-circuiting in JavaScript refers to the behavior of logical operators, specifically the OR (||) and AND (&&) operators, when evaluating expressions. When an expression involving these operators is evaluated, JavaScript will "short-circuit" and not evaluate the remaining operands if the final result can be determined based on the values of the previous operands.
+
+- In the case of the OR operator (||), if the first operand is true, JavaScript will short-circuit and return true without evaluating the second operand. This is because if one operand is true, the entire expression is true. If the first operand is false, JavaScript will evaluate the second operand.
+
+Here's an example:
+
+true || false; // true
+false || true; // true
+true || true; // true
+false || false; // false
