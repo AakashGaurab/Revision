@@ -1030,14 +1030,18 @@ import ReactDOM from "react-dom/client";
 import Todos from "./Todos";
 
 const App = () => {
+
   const [count, setCount] = useState(0);
+  
   const [todos, setTodos] = useState([]);
 
   const increment = () => {
     setCount((c) => c + 1);
   };
   const addTodo = useCallback(() => {
+  
     setTodos((t) => [...t, "New Todo"]);
+    
   }, [todos]);
 
   return (
