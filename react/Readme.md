@@ -1024,7 +1024,9 @@ https://www.youtube.com/shorts/eCnplWBF8zs
 Use the useCallback Hook to prevent the Todos component from re-rendering needlessly:
 
 import { useState, useCallback } from "react";
+
 import ReactDOM from "react-dom/client";
+
 import Todos from "./Todos";
 
 const App = () => {
