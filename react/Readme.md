@@ -1013,3 +1013,42 @@ false || false; // false
 - JSX syntax: React uses JSX (JavaScript XML) syntax, which allows developers to write HTML-like code within JavaScript. JSX makes it easier to create and manipulate UI components, as it provides a familiar syntax for working with HTML elements and attributes.
 - React Native: React can be used not only for web development but also for mobile app development through React Native. React Native allows developers to build native mobile apps using React components, providing a seamless development experience for both web and mobile platforms.
 - Developer tools: React provides dedicated tools for easy debugging, such as the React Developer Tools extension for Chrome. These tools help developers inspect and debug React components, making the development process faster and more efficient.
+
+
+# use Callback?
+- One reason to use useCallback is to prevent a component from re-rendering unless its props have changed.
+In this example, you might think that the Todos component will not re-render unless the todos change:
+https://www.youtube.com/shorts/eCnplWBF8zs
+
+- To fix this, we can use the useCallback hook to prevent the function from being recreated unless necessary.
+Use the useCallback Hook to prevent the Todos component from re-rendering needlessly:
+
+import { useState, useCallback } from "react";
+import ReactDOM from "react-dom/client";
+import Todos from "./Todos";
+
+const App = () => {
+  const [count, setCount] = useState(0);
+  const [todos, setTodos] = useState([]);
+
+  const increment = () => {
+    setCount((c) => c + 1);
+  };
+  const addTodo = useCallback(() => {
+    setTodos((t) => [...t, "New Todo"]);
+  }, [todos]);
+
+  return (
+    <>
+      <Todos todos={todos} addTodo={addTodo} />
+      <hr />
+      <div>
+        Count: {count}
+        <button onClick={increment}>+</button>
+      </div>
+    </>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
