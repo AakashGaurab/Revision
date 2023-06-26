@@ -850,5 +850,43 @@ const numbers = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5];
 const sortedNumbers = numbers.mySort((a, b) => a - b);
 
 console.log(sortedNumbers); // Output: [1, 1, 2, 3, 3, 4, 5, 5, 5, 6, 9]
+```
+# Diffrence between call, apply, and bind?
+	
+- The main differences between call, apply, and bind in JavaScript are how they affect the this value and how they handle arguments:
 
+- call: The call() method invokes a function with a given this value and arguments provided one by one. It allows you to explicitly specify what this should reference within the calling function. The syntax for using call is func.call(thisArg, arg1, arg2, ...).
+Example:
+```
+function greet(greeting, name) {
+  console.log(greeting + ', ' + name);
+}
+
+const person = { name: 'John' };
+greet.call(person, 'Hello'); // Output: Hello, John
+```
+- apply: The apply() method invokes a function with a given this value and arguments provided as an array. It allows you to pass in an array of arguments to a function. The syntax for using apply is func.apply(thisArg, [arg1, arg2, ...]).
+Example:
+```
+function greet(greeting, name) {
+  console.log(greeting + ', ' + name);
+}
+
+const person = { name: 'John' };
+greet.apply(person, ['Hello']); // Output: Hello, John
+```
+
+- bind: The bind() method returns a new function with a specified this value and optional arguments. It allows you to create a new function with a predefined this value, which can be useful for event handlers and callbacks. The syntax for using bind is new Function(args, body, ...).
+Example:
+```
+function greet(greeting, name) {
+  console.log(greeting + ', ' + name);
+}
+
+const person = { name: 'John' };
+const boundGreet = greet.bind(person, 'Hello');
+boundGreet(); // Output: Hello, John
+```
+
+- In summary, call and apply are used to invoke a function with a specified this value and arguments, while bind is used to create a new function with a specified this value and optional arguments. The main difference between call and apply is how they handle arguments: call takes arguments one by one, while apply takes an array of arguments [3].
 
