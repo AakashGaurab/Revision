@@ -681,3 +681,13 @@ console.log(q.search); //returns '?year=2017&month=february'
 var qdata = q.query; //returns an object: { year: 2017, month: 'february' }
 
 console.log(qdata.month); //returns 'february'
+
+# Node.js as a File Server
+- Read Files
+- fs.readFile('demofile1.html', function(err, data) {
+
+- Create Files
+- fs.appendFile('mynewfile1.txt', 'Hello content!', function (err) {
+
+- Delete Files
+- Delete Files
