@@ -946,6 +946,7 @@ if (givenDate > currentDate) {
 - Controlled Components: A controlled component is a React component that handles the form elements and their data through the component's state. The component's state is used to store the current value of the form elements, and the component itself controls the changes to the form elements by updating its state. The form elements are rendered with the value attribute bound to the corresponding state property, and the changes to the form elements are handled through the onChange event.
 
 Here's an example of a controlled component in React:
+```
 import React, { useState } from 'react';
 
 function ControlledComponent() {
@@ -959,8 +960,9 @@ function ControlledComponent() {
     <input type="text" value={name} onChange={handleChange} />
   );
 }
-
+```
 - Uncontrolled Components: An uncontrolled component is a React component where the form elements store their own state internally, and the component does not manage the form data through its state. Instead, you can access the form element's value using a ref to query the DOM when needed.
+ ```
    import React, { useRef } from 'react';
 
 function UncontrolledComponent() {
@@ -978,6 +980,7 @@ function UncontrolledComponent() {
     </form>
   );
 }
+```
 
 # Class Components vs Functional Components.
 - Conclusion In conclusion, class components and functional components both have their use cases in React. Class components were the traditional way of handling state and lifecycle methods, but with the introduction of Hooks, functional components gained similar capabilities. Functional components offer a simpler syntax and can be more concise, while class components may be preferred by developers accustomed to object-oriented programming. Performance-wise, there is usually no significant difference between the two types of components. It's important to choose the approach that best suits your project requirements and personal coding style.
@@ -1023,6 +1026,7 @@ https://www.youtube.com/shorts/eCnplWBF8zs
 - To fix this, we can use the useCallback hook to prevent the function from being recreated unless necessary.
 Use the useCallback Hook to prevent the Todos component from re-rendering needlessly:
 
+```
 import { useState, useCallback } from "react";
 
 import ReactDOM from "react-dom/client";
@@ -1058,8 +1062,8 @@ const App = () => {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
-
-
+```
+```
 - child component
 - import { memo } from "react";
 
@@ -1077,6 +1081,7 @@ const Todos = ({ todos, addTodo }) => {
 };
 
 export default memo(Todos);
+```
 
 # use Memo?
 - The useMemo Hook can be used to keep expensive, resource intensive functions from needlessly running.
@@ -1087,6 +1092,7 @@ When changing the count or adding a todo, you will notice a delay in execution.
 - The useMemo Hook only runs when one of its dependencies update.
 - The useMemo and useCallback Hooks are similar. The main difference is that useMemo returns a memoized value and useCallback returns a memoized function. You can learn more about useCallback in the useCallback chapter.
 
+```
 - import { useState, useMemo } from "react";
 import ReactDOM from "react-dom/client";
 
@@ -1132,3 +1138,4 @@ const expensiveCalculation = (num) => {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
+```
