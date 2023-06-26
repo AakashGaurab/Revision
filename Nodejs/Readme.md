@@ -641,3 +641,43 @@ CP (Consistency and Partition Tolerance): In this mode, consistency and partitio
 AP (Availability and Partition Tolerance): In this mode, availability and partition tolerance are prioritized over strict consistency. The system guarantees that every request receives a response, even in the presence of network partitions. However, there may be temporary inconsistencies in the data due to asynchronous replication or eventual consistency [7].
 
 EL (Else Latency, Consistency): In this mode, low latency and high availability are prioritized, but consistency and partition tolerance may be compromised. The system aims to provide fast response times and high availability, but there may be data inconsistencies or conflicts due to concurrent updates or lack of coordination [7].
+
+# Events in Node.js?
+- The EventEmitter Object
+You can assign event handlers to your own events with the EventEmitter object.
+In the example below we have created a function that will be executed when a "scream" event is fired.
+To fire an event, use the emit() method.
+
+var events = require('events');
+var eventEmitter = new events.EventEmitter();
+
+//Create an event handler:
+var myEventHandler = function () {
+  console.log('I hear a scream!');
+}
+
+//Assign the event handler to an event:
+eventEmitter.on('scream', myEventHandler);
+
+//Fire the 'scream' event:
+eventEmitter.emit('scream');
+
+# Node.js URL Module
+- The URL module splits up a web address into readable parts.
+To include the URL module, use the require() method:
+
+var url = require('url');
+
+var adr = 'http://localhost:8080/default.htm?year=2017&month=february';
+
+var q = url.parse(adr, true);
+
+console.log(q.host); //returns 'localhost:8080'
+
+console.log(q.pathname); //returns '/default.htm'
+
+console.log(q.search); //returns '?year=2017&month=february'
+
+var qdata = q.query; //returns an object: { year: 2017, month: 'february' }
+
+console.log(qdata.month); //returns 'february'
