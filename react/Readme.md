@@ -1139,3 +1139,106 @@ const expensiveCalculation = (num) => {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
 ```
+
+# what is babel ?
+- Babel is a JavaScript compiler that is mainly used to convert ECMAScript 2015+ code into a backwards-compatible version of JavaScript for current and older browsers or environments babeljs.io. It is an essential tool in React development, as it allows developers to use the latest JavaScript features without worrying about browser compatibility. Babel can also transform JSX syntax, which is used in React components babeljs.io.
+
+# what is ES6 ?
+- ES6 stands for ECMAScript 6.
+ECMAScript was created to standardize JavaScript, and ES6 is the 6th version of ECMAScript, it was published in 2015, and is also known as ECMAScript 2015.
+
+# What is JSX?
+- JSX stands for JavaScript XML.
+- With JSX you can write expressions inside curly braces { }.
+  ```
+  const myElement = <h1>React is {5 + 5} times better with JSX</h1>;
+  ```
+  - Inserting a Large Block of HTML
+```
+    const myElement = (
+  <ul>
+    <li>Apples</li>
+    <li>Bananas</li>
+    <li>Cherries</li>
+  </ul>
+    );
+```
+
+- class = className 
+- for = htmlFor
+
+Conditions - if statements
+ # React supports if statements, but not inside JSX.
+```
+function Goal(props) {
+  const isGoal = props.isGoal;
+  if (isGoal) {
+    return <MadeGoal/>;
+  }
+  return <MissedGoal/>;
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Goal isGoal={false} />);
+```
+To be able to use conditional statements in JSX, you should put the if statements outside of the JSX, or you could use a ternary expression instead:
+
+```
+const x = 5;
+
+const myElement = <h1>{(x) < 10 ? "Hello" : "Goodbye"}</h1>;
+```
+# what are props?
+- React Props are like function arguments in JavaScript and attributes in HTML.
+To send props into a component, use the same syntax as HTML attributes:
+```
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+
+function Car(props) {
+  return <h2>I am a { prop.brand.name }!</h2>;
+}
+
+function Garage() {
+  const carName = "Ford";
+  return (
+    <>
+	    <h1>Who lives in my garage?</h1>
+	    <Car brand={ name: "Ford", model: "Mustang" } />
+    </>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Garage />);
+```
+# Rendering array
+- In React, you will render lists with some type of loop.
+The JavaScript map() array method is generally the preferred method.
+
+```
+function Car(props) {
+  return <li>I am a { props.brand }</li>;
+}
+
+function Garage() {
+  const cars = [
+    {id: 1, brand: 'Ford'},
+    {id: 2, brand: 'BMW'},
+    {id: 3, brand: 'Audi'}
+  ];
+  return (
+    <>
+      <h1>Who lives in my garage?</h1>
+      <ul>
+        {cars.map((car) => <Car key={car.id} brand={car.brand} />)}
+      </ul>
+    </>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Garage />);
+```
+
+# Routing in React
