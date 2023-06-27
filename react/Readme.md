@@ -1365,3 +1365,19 @@ console.log(obj.id); // "The ID is: 893"
 obj.id = 'hello';
 console.log(obj.id); // "The ID is: 893"
 ```
+
+# what is the value of this  in a call back function passed to a event listener?
+- In a callback function passed to an event listener, this refers to the DOM element that triggered the event. This allows you to access properties and methods of the element directly within the callback function developer.mozilla.org.
+
+Here's an example of using this in a callback function:
+```
+const button = document.querySelector('button');
+
+function handleClick(event) {
+  console.log('Button clicked!');
+  console.log(this); // <button> element that triggered the event
+}
+
+button.addEventListener('click', handleClick);
+```
+
