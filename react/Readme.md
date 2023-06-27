@@ -1315,3 +1315,7 @@ const Layout = () => {
 export default Layout;
 ```
 
+
+# what is context api?
+- same as useContext
+- The Context API is a feature in React that allows you to share data with multiple components without having to pass data through props manually. It can be useful for scenarios like theming, user language, authentication, and more.
