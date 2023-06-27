@@ -1319,3 +1319,49 @@ export default Layout;
 # what is context api?
 - same as useContext
 - The Context API is a feature in React that allows you to share data with multiple components without having to pass data through props manually. It can be useful for scenarios like theming, user language, authentication, and more.
+
+# what is getter and setter method in JS?
+- In JavaScript, getter and setter methods are used to access and manipulate object properties, providing a convenient way to control how a certain field is initialized and provided to the user. This can help improve data quality and encapsulation in your code scaler.com.
+
+A getter method is used to access the properties of an object, like this:
+```
+const student = {
+  firstName: 'Monica',
+  get getName() {
+    return this.firstName;
+  }
+};
+
+console.log(student.getName); // Monica
+```
+- A setter method is used to change the values of an object, like this:
+```
+const student = {
+  firstName: 'Monica',
+  set changeName(newName) {
+    this.firstName = newName;
+  }
+};
+
+console.log(student.firstName); // Monica
+student.changeName = 'Sarah';
+console.log(student.firstName); // Sarah
+```
+```
+var obj = {
+  n: 67,
+  get id() {
+      return 'The ID is: ' + this.n;
+  },
+  set id(val) {
+      if (typeof val === 'number')
+          this.n = val;
+  }
+}
+
+console.log(obj.id); // "The ID is: 67"
+obj.id = 893;
+console.log(obj.id); // "The ID is: 893"
+obj.id = 'hello';
+console.log(obj.id); // "The ID is: 893"
+```
