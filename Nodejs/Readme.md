@@ -691,3 +691,8 @@ console.log(qdata.month); //returns 'february'
 
 - Delete Files
 - Delete Files
+
+
+# what is long polling ?
+- In long polling, the client sends an HTTP request to the server and keeps the connection open until new data becomes available. The server holds the request open, not responding immediately, but instead waiting until it has new information to send. Once the server has data to send, it responds to the client with a complete response containing the new information
+- 
