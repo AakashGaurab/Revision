@@ -695,4 +695,19 @@ console.log(qdata.month); //returns 'february'
 
 # what is long polling ?
 - In long polling, the client sends an HTTP request to the server and keeps the connection open until new data becomes available. The server holds the request open, not responding immediately, but instead waiting until it has new information to send. Once the server has data to send, it responds to the client with a complete response containing the new information
-- 
+
+# What is clickjacking? How do you fix it?
+- Clickjacking, also known as a "UI redress attack," is a type of cyber attack where an attacker uses multiple transparent or opaque layers to trick a user into clicking on a button or link on another page when they were intending to click on the top-level page owasp.org. The attacker hijacks clicks meant for their page and routes them to another page, most likely owned by another application, domain, or both. Using a similar technique, keystrokes can also be hijacked owasp.org.
+
+To fix clickjacking, you can implement several measures to protect your website and its users:
+- Frame-busting: This technique involves adding a "X-Frame-Options" HTTP header to your server configuration, which prevents your content from being embedded within an iframe on another website. For example, in Nginx, you can add the following line to your configuration file:
+```
+add_header X-Frame-Options SAMEORIGIN;
+```
+This will ensure that your website's content can only be embedded within an iframe on the same domain dev.to.
+
+- Content Security Policy (CSP): Implement a CSP to restrict which sources of content are allowed to be loaded by your website. This can help prevent the loading of malicious iframes. Here's an example of a CSP configuration for Nginx:
+add_header Content-Security-
+
+- Monitor for clickjacking: Regularly scan your website for clickjacking vulnerabilities using automated tools like Vulnerable.Live dev.to.
+- Educate users: Inform your users about the risks of clickjacking and provide guidance on how to identify and avoid such attacks.
