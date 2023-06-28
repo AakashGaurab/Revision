@@ -1140,6 +1140,111 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
 ```
 
+# useRef()
+- The useRef Hook allows you to persist values between renders.
+It can be used to store a mutable value that does not cause a re-render when updated.
+It can be used to access a DOM element directly.
+
+- If we tried to count how many times our application renders using the useState Hook, we would be caught in an infinite loop since this Hook itself causes a re-render.
+To avoid this, we can use the useRef Hook.
+
+- useRef() only returns one item. It returns an Object called current.
+When we initialize useRef we set the initial value: useRef(0).
+It's like doing this: const count = {current: 0}. We can access the count by using count.current.
+Run this on your computer and try typing in the input to see the application render count increase.
+
+```
+import { useState, useEffect, useRef } from "react";
+import ReactDOM from "react-dom/client";
+
+function App() {
+  const [inputValue, setInputValue] = useState("");
+  const count = useRef(0);
+
+  useEffect(() => {
+    count.current = count.current + 1;
+  });
+
+  return (
+    <>
+      <input
+        type="text"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+      />
+      <h1>Render Count: {count.current}</h1>
+    </>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+
+```
+
+# useContext
+- React Context is a way to manage state globally.
+It can be used together with the useState Hook to share state between deeply nested components more easily than with useState alone.
+
+```
+import { useState, createContext, useContext } from "react";
+import ReactDOM from "react-dom/client";
+
+const UserContext = createContext();
+
+function Component1() {
+  const [user, setUser] = useState("Jesse Hall");
+
+  return (
+    <UserContext.Provider value={user}>
+      <h1>{`Hello ${user}!`}</h1>
+      <Component2 />
+    </UserContext.Provider>
+  );
+}
+
+function Component2() {
+  return (
+    <>
+      <h1>Component 2</h1>
+      <Component3 />
+    </>
+  );
+}
+
+function Component3() {
+  return (
+    <>
+      <h1>Component 3</h1>
+      <Component4 />
+    </>
+  );
+}
+
+function Component4() {
+  return (
+    <>
+      <h1>Component 4</h1>
+      <Component5 />
+    </>
+  );
+}
+
+function Component5() {
+  const user = useContext(UserContext);
+
+  return (
+    <>
+      <h1>Component 5</h1>
+      <h2>{`Hello ${user} again!`}</h2>
+    </>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Component1 />);
+```
+
 # what is babel ?
 - Babel is a JavaScript compiler that is mainly used to convert ECMAScript 2015+ code into a backwards-compatible version of JavaScript for current and older browsers or environments babeljs.io. It is an essential tool in React development, as it allows developers to use the latest JavaScript features without worrying about browser compatibility. Babel can also transform JSX syntax, which is used in React components babeljs.io.
 
