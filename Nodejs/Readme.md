@@ -750,3 +750,7 @@ io.on("connection", (socket) => {
 Please note that the above examples assume that you have already set up your Socket.IO server and established a connection with the clients. You will need to include the necessary server-side code to handle the Socket.IO connection and events.
 
 - In conclusion, to broadcast a message to all users in Socket.IO, you can use the io.emit() method to send the message to all connected clients, including the sender, or use the socket.broadcast.emit() method to send the message to all other connected clients except the sender. Additionally, you can use rooms to send messages to specific users or groups of users using io.to(room).emit() or socket.to(room).emit().
+
+# what are closures?
+- In conclusion, a closure is a programming technique that combines a function with the environment in which it was created. It allows a function to retain access to variables from its surrounding scope, even when executed outside of that scope. Closures are commonly used in languages with first-class functions and have practical applications in areas such as event handling and state management. Understanding closures is important for writing more flexible and powerful code in languages that support them.
+
