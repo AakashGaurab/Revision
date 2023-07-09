@@ -1,0 +1,7 @@
+## Flask Developer 
+# What is Flask?
+- Flask is a microweb framework that provides an API to build up web applications. Flask’s framework is also easier to learn because of its diversified working style. Flask is based on the WSGI (Web Server Gateway Interface) toolkit and the Jinja2 template engine. It is very flexible to implement a simple web application. Also, Flask provides visual debugging, which gives more control over the component.
+- Lightweight and minimalistic: Flask is a lightweight web framework with minimal dependencies on external libraries. It allows developers to start small and scale up to complex applications as needed. This simplicity makes it easier to understand and learn, especially for beginners in web development.
+- Template engine and easy integration: Flask comes with a built-in template engine that allows developers to use the same user interface for multiple pages. This feature simplifies the development process and improves code reusability. Flask also integrates well with other technologies and libraries, making it easier to add external features and functionalities to the application.
+- Integrated support for testing: Flask provides integrated support for unit testing, making it easier to write and execute tests for your web application. It comes with a built-in development server and a fast debugger, which helps in identifying and fixing issues during the testing phase.
+- 
