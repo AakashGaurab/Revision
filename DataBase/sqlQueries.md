@@ -225,8 +225,15 @@ Remember to adapt the table name and column name based on your specific scenario
 ``SELECT aa.title, cc.name, uu.name FROM blog as aa join blog_category as bb ON aa.id = bb.blog_id JOIN category as cc ON bb.category_id =cc.id RIGHT JOIN user as uu ON aa.user_id = uu.id;``
 
 
+# To find the second highest value in a column of a SQL table, you can use the following query:
 
-
+sql
+Copy code
+```
+SELECT MAX(column_name) AS second_highest
+FROM table_name
+WHERE column_name < (SELECT MAX(column_name) FROM table_name
+```
 
 
 #### For Practice
