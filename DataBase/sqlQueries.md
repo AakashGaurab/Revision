@@ -23,6 +23,40 @@
     DROP TABLE students;
 
 
+
+# To interchange the values of "male" and "female" in a SQL table, you can use a SQL UPDATE statement with a CASE expression. Here's an example:
+
+sql
+Copy code
+```
+UPDATE your_table_name
+SET gender = CASE
+    WHEN gender = 'male' THEN 'female'
+    WHEN gender = 'female' THEN 'male'
+    ELSE gender -- Include this line if you want to handle any other gender values
+END;
+```
+In the above query, replace your_table_name with the actual name of your table, and gender with the name of the column that stores the gender values.
+
+The CASE expression checks the current value of the gender column. If it is 'male', it is updated to 'female', and if it is 'female', it is updated to 'male'. You can add additional WHEN conditions and corresponding updates if you have other gender values to handle. The ELSE clause is optional but can be used to handle any unexpected values or to keep them unchanged.
+
+Here's an example assuming a table called users:
+
+sql
+Copy code
+```
+UPDATE users
+SET gender = CASE
+    WHEN gender = 'male' THEN 'female'
+    WHEN gender = 'female' THEN 'male'
+    ELSE gender
+END;
+```
+After executing the query, the values in the gender column will be interchanged between 'male' and 'female' for all rows in the table.
+
+Remember to adapt the table name and column name based on your specific scenario and table structu
+
+
 #### Reset Table Data
     TRUNCATE TABLE students;
 
