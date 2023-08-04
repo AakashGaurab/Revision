@@ -122,6 +122,31 @@
 - setTimeout() is used to execute a function after a specified delay, specified in milliseconds. Once the delay has elapsed, the function is executed once and then the timer is cleared. If you want to execute the function repeatedly, you need to call setTimeout() again after the function has executed.
 
 
+# implement settimeout using set interval?
+- You can implement setTimeout using setInterval by setting an interval to repeatedly check if the desired delay has passed, and then clearing the interval when the delay is reached. Here's a simple example of how you can achieve this in JavaScript:
+
+```
+function setTimeoutUsingInterval(callback, delay, ...args) {
+  let intervalId = setInterval(() => {
+    delay -= 10; // Interval check every 10ms, you can adjust this value for better precision.
+
+    if (delay <= 0) {
+      clearInterval(intervalId);
+      callback(...args);
+    }
+  }, 10); // Run the interval check every 10ms, you can adjust this value for better precision.
+}
+
+// Example usage:
+console.log("Start");
+setTimeoutUsingInterval(() => {
+  console.log("Timeout completed");
+}, 2000);
+
+```
+
+
+
 ## How can you make a network request with http module from the backend?
 
 - In Node.js, you can use the built-in http module to make HTTP requests from the backend. Here's an example of how to make a GET request to a URL using the http module:
