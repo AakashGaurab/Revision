@@ -136,3 +136,40 @@ properties are:
 Progressive rendering is the name given to techniques used to improve the performance of a webpage (in particular, improve perceived load time) to render content for display as quickly as possible.
 
 We can implement the progressive rendering of the page by loading the **lazy loading of the images**.  We can use *Intersection Observer API* to lazy load the image. The API makes it simple to detect when an element enters the viewport and take an action when it does. Once the image enters the viewport, we will start loading the images.
+
+
+
+# How to Calculate Specificity?
+Memorize how to calculate specificity!
+
+Start at 0, add 100 for each ID value, add 10 for each class value (or pseudo-class or attribute selector), add 1 for each element selector or pseudo-element.
+
+Note: Inline style gets a specificity value of 1000, and is always given the highest priority!
+
+Note 2: There is one exception to this rule: if you use the !important rule, it will even override inline styles!
+
+The table below shows some examples on how to calculate specificity values:
+
+Selector	Specificity Value	Calculation
+p	1	1
+p.test	11	1 + 10
+p#demo	101	1 + 100
+<p style="color: pink;">	1000	1000
+#demo	100	100
+.test	10	10
+p.test1.test2	21	1 + 10 + 10
+#navbar p#demo	201	100 + 1 + 100
+*	0	0 (the universal selector is ignored)
+The selector with the highest specificity value will win and take effect!
+
+Consider these three code fragments:
+
+Example
+A: h1
+B: h1#content
+C: <h1 id="content" style="color: pink;">Heading</h1>
+The specificity of A is 1 (one element selector)
+The specificity of B is 101 (one ID reference + one element selector)
+The specificity of C is 1000 (inline styling)
+
+Since the third rule (C) has the highest specificity value (1000), this style declaration will be applied.
