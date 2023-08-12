@@ -1486,3 +1486,6 @@ function handleClick(event) {
 button.addEventListener('click', handleClick);
 ```
 
+# using drag and drop 
+- use react-beautiful-dnd 
+- and remove React strict mode form index.js
