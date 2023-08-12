@@ -779,3 +779,14 @@ Please note that the above examples assume that you have already set up your Soc
 # what are closures?
 - In conclusion, a closure is a programming technique that combines a function with the environment in which it was created. It allows a function to retain access to variables from its surrounding scope, even when executed outside of that scope. Closures are commonly used in languages with first-class functions and have practical applications in areas such as event handling and state management. Understanding closures is important for writing more flexible and powerful code in languages that support them.
 
+# Storing data in mongodb
+- if you want to do Crud operations based on _id then
+```
+const schema = mongoose.Schema({
+    _id: { type: mongoose.Schema.Types.ObjectId },
+    name:String,
+    email:String,
+    password:String
+});
+```
+use this kind of model , Notice _id 
