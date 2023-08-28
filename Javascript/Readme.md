@@ -890,3 +890,6 @@ boundGreet(); // Output: Hello, John
 
 - In summary, call and apply are used to invoke a function with a specified this value and arguments, while bind is used to create a new function with a specified this value and optional arguments. The main difference between call and apply is how they handle arguments: call takes arguments one by one, while apply takes an array of arguments [3].
 
+
+# what is lexically scoping?
+- Lexical scoping, also known as static scoping, is a concept in programming languages that determines how the scope of variables is determined based on the physical structure of the code, specifically its nesting within blocks or functions. Lexical scoping is often contrasted with dynamic scoping, where the scope of a variable is determined by the order of function calls at runtime.
