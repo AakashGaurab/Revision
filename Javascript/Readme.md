@@ -893,7 +893,36 @@ boundGreet(); // Output: Hello, John
 
 # what is lexically scoping?
 - Lexical scoping, also known as static scoping, is a concept in programming languages that determines how the scope of variables is determined based on the physical structure of the code, specifically its nesting within blocks or functions. Lexical scoping is often contrasted with dynamic scoping, where the scope of a variable is determined by the order of function calls at runtime.
-- 
+  Lexical scoping, also known as static scoping, is a concept in programming languages, including JavaScript, that determines the scope (visibility and accessibility) of variables and identifiers based on their location in the source code at the time of lexical analysis or parsing. In other words, lexical scoping is defined by the physical structure of the code and how functions and blocks are nested within each other.
+
+Here are the key characteristics of lexical scoping:
+
+- Scope Based on Function Nesting: In lexically scoped languages like JavaScript, the scope of a variable is primarily determined by its location within nested functions or blocks. Inner functions have access to variables declared in their outer functions or parent scopes.
+
+- No Dependency on Execution Context: Lexical scoping is determined at compile time or when the code is parsed, not at runtime. This means that the scope of a variable is known before the code is executed, and it does not depend on how or where the function is called during runtime.
+
+- Closures: Lexical scoping enables the creation of closures, which are functions that "remember" the scope in which they were created, even if they are executed in a different context. Closures can access variables from their outer (enclosing) scopes, even after the outer function has completed execution.
+
+Here's a simple example in JavaScript to illustrate lexical scoping:
+
+javascript
+```
+function outerFunction() {
+  const outerVar = 'I am from outerFunction';
+
+  function innerFunction() {
+    console.log(outerVar); // innerFunction can access outerVar
+  }
+
+  return innerFunction;
+}
+```
+```
+const myClosure = outerFunction(); // Call outerFunction, which returns innerFunction
+myClosure(); // Call myClosure,
+```
+and it still has access to outerVar
+In this example, innerFunction is lexically scoped within outerFunction, allowing it to access outerVar even after outerFunction has finished executing. This behavior is a fundamental aspect of lexical scoping and closures in JavaScript, and it provides a powerful mechanism for managing data privacy and encapsulation.
 
 # Event Propogation and Event Delegation
 - Event propagation in JavaScript refers to the process of how events are handled and distributed within the Document Object Model (DOM) hierarchy when an event occurs. There are two main phases of event propagation: capturing phase and bubbling phase.
