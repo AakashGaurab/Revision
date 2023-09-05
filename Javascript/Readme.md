@@ -976,3 +976,77 @@ parentElement.addEventListener('click', function(event) {
 });
 ```
 Understanding event propagation is important for controlling how events are handled in your web applications, especially when working with complex DOM structures or multiple event listeners. It allows you to control the flow of events and efficiently handle them at the appropriate level in the DOM hierarchy.
+
+
+# Debouncing and throttling 
+- Debouncing and throttling are two techniques used in JavaScript to control and manage the frequency of function execution, especially when dealing with events like scrolling, resizing, and input. These techniques help optimize performance and prevent functions from being executed too frequently, which can lead to performance bottlenecks.
+
+- Debouncing:
+
+Debouncing is a technique that ensures a function is executed only after a certain period of inactivity (a pause) following an event. It is commonly used to delay the execution of a function until the user has stopped performing a specific action. For example, debouncing is useful for search input fields to avoid making an API request on every keystroke.
+
+Here's how debouncing works:
+
+When the event occurs (e.g., keypress, scroll, resize), a timer is started.
+If the event occurs again before the timer expires, the previous timer is canceled.
+The function is executed only after the timer has fully elapsed without further events.
+Example using JavaScript:
+
+javascript
+Copy code
+```
+function debounce(func, delay) {
+  let timerId;
+
+  return function (...args) {
+    if (timerId) clearTimeout(timerId);
+    timerId = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
+}
+```
+// Usage:
+```
+const debouncedFunction = debounce(myFunction, 300);
+inputElement.addEventListener('input', debouncedFunction);
+```
+In this example, myFunction will be executed only after the user has finished typing and there is a 300ms pause between keypresses.
+
+- Throttling:
+
+- Throttling is a technique that limits the rate at which a function can be executed. It ensures that a function is executed at regular intervals, preventing it from running more frequently than a specified time period. Throttling is useful for scenarios where you want to control the frequency of function calls, such as scrolling or mouse move events.
+
+Here's how throttling works:
+
+When the event occurs, the function is executed.
+Subsequent events during a specified time interval are ignored until the interval has passed.
+After the interval has passed, the function can be executed again for the next event.
+Example using JavaScript:
+
+javascript
+Copy code
+```
+function throttle(func, limit) {
+  let inThrottle;
+  
+  return function (...args) {
+    if (!inThrottle) {
+      func.apply(this, args);
+      inThrottle = true;
+      
+      setTimeout(() => {
+        inThrottle = false;
+      }, limit);
+    }
+  };
+}
+```
+// Usage:
+```
+const throttledFunction = throttle(myFunction, 300);
+window.addEventListener('scroll', throttledFunction);
+```
+In this example, myFunction will be executed at most once every 300ms during scroll events, preventing excessive function calls.
+
+- Debouncing and throttling are essential techniques for optimizing the performance and responsiveness of web applications by controlling how frequently certain functions are executed, especially in situations where rapid events can lead to inefficient resource consumption.
