@@ -893,3 +893,57 @@ boundGreet(); // Output: Hello, John
 
 # what is lexically scoping?
 - Lexical scoping, also known as static scoping, is a concept in programming languages that determines how the scope of variables is determined based on the physical structure of the code, specifically its nesting within blocks or functions. Lexical scoping is often contrasted with dynamic scoping, where the scope of a variable is determined by the order of function calls at runtime.
+- 
+
+# Event Propogation and Event Delegation
+- Event propagation in JavaScript refers to the process of how events are handled and distributed within the Document Object Model (DOM) hierarchy when an event occurs. There are two main phases of event propagation: capturing phase and bubbling phase.
+
+- Capturing Phase:
+
+The event starts from the root of the DOM tree and moves down to the target element.
+Event listeners registered during this phase are called in the order they were added, starting from the root and moving towards the target element.
+Capturing is less commonly used in practice but can be helpful for global event handling or when you want to intercept events before they reach their target.
+To register an event listener in the capturing phase, you can pass true as the third argument to addEventListener:
+
+javascript
+Copy code
+```
+element.addEventListener('click', callback, true);
+```
+- Bubbling Phase:
+
+After the event reaches the target element, it starts to "bubble" up the DOM tree from the target to the root.
+Event listeners registered during this phase are called in the reverse order of their registration, starting from the target and moving up the tree.
+By default, event listeners are registered in the bubbling phase:
+
+javascript
+Copy code
+```
+element.addEventListener('click', callback);
+```
+- Stopping Propagation:
+
+You can stop event propagation at any phase using the stopPropagation method of the event object.
+This prevents the event from continuing to propagate through the DOM tree.
+javascript
+Copy code
+```
+element.addEventListener('click', function(event) {
+  event.stopPropagation(); // Stops further propagation
+});
+```
+ - Event Delegation:
+
+Event delegation is a technique where you attach a single event listener to a common ancestor of multiple elements you want to listen to.
+When an event occurs on a descendant element, it bubbles up to the ancestor, where you can handle it based on the target element.
+This is especially useful for optimizing performance when dealing with a large number of elements.
+javascript
+Copy code
+```
+parentElement.addEventListener('click', function(event) {
+  if (event.target.matches('.specific-child')) {
+    // Handle the event for specific child elements
+  }
+});
+```
+Understanding event propagation is important for controlling how events are handled in your web applications, especially when working with complex DOM structures or multiple event listeners. It allows you to control the flow of events and efficiently handle them at the appropriate level in the DOM hierarchy.
